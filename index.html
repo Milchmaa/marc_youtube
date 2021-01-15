@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Marcs besseres YouTube</title>
+    <style>
+        /* STYLE */
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+        .sidenav {
+            visibility: hidden;
+            display: none;
+        }
+
+        .searchbar {
+            visibility: hidden;
+            display: none;
+        }
+
+        .header {
+            width: 100%;
+            height: 80px;
+            border-bottom: 1px solid black;
+        }
+
+        .header img {
+            float: left;
+            display: block;
+            width: 100px;
+        }
+
+        .header h1 {
+            position: relative;
+            color: black;
+            left: 10px;
+            margin-top: 10px;
+        }
+
+        .content {
+            flex: 1 0 auto;
+            justify-content: flex-start;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .main-items {
+            margin: 10px;
+            height: 120px;
+            width: 120px;
+            box-shadow: 2px 2px 4px #000000;
+        }
+
+        .footer {
+            flex-shrink: 0;
+            text-align: center;
+            padding: 10px;
+            /* height: 40px; */
+            /* width: 100%; */
+            background-color: lightgray;
+            /* text-align: center; */
+        }
+
+        .topnav {
+            overflow: hidden;
+            background-color: lightgray;
+            position: relative;
+        }
+
+        .topnav #myLinks {
+            display: none;
+        }
+
+        .topnav a {
+            color: black;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 17px;
+            display: block;
+        }
+
+        .topnav a.icon {
+            margin-right: 20px;
+            margin-top: 20px;
+            background: white;
+            display: block;
+            position: absolute;
+            right: 0;
+            top: 0
+        }
+
+        .topnav a:hover {
+            color: black;
+        }
+
+        .active {
+            background-color: white;
+            color: black;
+        }
+
+        @media (min-width: 1000px) {
+            .header h1 {
+                float: left;
+            }
+
+            .topnav a.icon {
+                visibility: hidden;
+            }
+
+            .searchbar {
+                visibility: visible;
+                display: inline;
+                width: 50%;
+                padding: 12px 20px;
+                margin: 8px 0 10px 10%;
+                box-sizing: border-box;
+            }
+
+            .content {
+                margin-left: 160px;
+            }
+
+            .sidenav {
+                visibility: visible;
+                display: inline;
+
+                height: 92%;
+                width: 160px;
+                margin-top: 8%;
+                position: fixed;
+                z-index: 1;
+                /* top: 0;
+                left: 0; */
+                background-color: white;
+                /* overflow-x: hidden; */
+                padding-top: 20px;
+            }
+
+            .sidenav a {
+                padding: 6px 8px 6px 16px;
+                text-decoration: none;
+                font-size: 25px;
+                color: #818181;
+                display: block;
+            }
+
+            .sidenav a:hover {
+                color: black;
+            }
+        }
+
+    </style>
+  </head>
+  <body>
+    <!-- HEAD -->
+    <div class="header">
+        <!-- <img src="https://logos-world.net/wp-content/uploads/2020/04/YouTube-Emblem.png">
+        <h1>Youtube</h1>  -->
+
+        <div class="topnav">
+            <a href="#home" class="active">
+                <img src="https://logos-world.net/wp-content/uploads/2020/04/YouTube-Emblem.png">
+                <h1>Youtube</h1>
+                <input type="text" placeholder="Search..." class="searchbar"/>
+             </a>
+
+            <div id="myLinks" class="test">
+              <a href="#news">Trends</a>
+              <a href="#contact">Libary</a>
+              <a href="#about">History</a>
+            </div>
+            <a href="javascript:void(0);" class="icon" onclick="hamburgerMenu()">
+              <i class="fa fa-bars"></i>
+            </a>
+          </div>
+
+     </div>
+
+     <div class="sidenav">
+        <a href="#about">Home</a>
+        <a href="#services">Libary</a>
+        <a href="#clients">History</a>
+        <a href="#contact">Trending</a>
+        <a href="#music">Music</a>
+        <a href="#gaming">Gaming</a>
+      </div>
+
+     <div class="content">
+         <ul class="image-container"></ul>
+     </div>
+
+    <footer class="footer">
+        © Marc Welz
+    </footer>
+
+    <script>
+        //   JAVASCRIPT
+        for (let i=0; i<16; i++) {
+            fetch("https://picsum.photos/120/120").then(response => response.blob() ).then(raw => {
+            const img = document.createElement('img');
+            img.src = URL.createObjectURL(raw)
+            img.className = "main-items"
+            document.querySelector('ul').appendChild(img);
+            });
+        }
+
+        function hamburgerMenu() {
+            var x = document.getElementById("myLinks");
+            if (x.style.display === "block") {
+                x.style.display = "none";
+            } else {
+                x.style.display = "block";
+            }
+        }
+    </script>
+  </body>
+</html>
